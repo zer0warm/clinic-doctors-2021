@@ -14,11 +14,10 @@ const User = new Schema(
 );
 
 User
-  .virtual('pass')
-  .set(function(pass){
-    this.hash = bcrypt.hashSync(pass,10)
-  })
-
+    .virtual('pass')
+    .set(function(pass) {
+        this.hash = bcrypt.hashSync(pass,10);
+    });
 
 // User
 //   .virtual('fullName')
@@ -26,10 +25,8 @@ User
 //     return `${this.firstName} ${this.lastName}`
 //   })
 
-User.methods = {
-  authenticate: function(pass){
-    return bcrypt.compareSync(pass, this.hash)
-  }
+User.methods.authenticate = function(pass) {
+    return bcrypt.compareSync(pass, this.hash);
 }
 
 module.exports = mongoose.model('User', User);
