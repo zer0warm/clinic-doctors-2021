@@ -8,7 +8,15 @@ class DoctorController {
       })
       .catch(next);
   }
-  
+
+  showDoctor(req, res, next) {
+    Doctor.findById(req.params.id)
+        .then((doctor) => {
+          res.render('doctor', { doctor: doctor });
+        })
+        .catch(next);
+  }
+
   // createDoctor(req, res, next) {
   //   console.log(req.body);
   //   res.render('doctors/create');

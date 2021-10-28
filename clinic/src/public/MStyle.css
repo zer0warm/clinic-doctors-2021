@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-image: linear-gradient(to bottom left, #CB1AE8, #37BDA6);
+}
+
+#btn:hover{
+    border-radius: 5px;
+    background: #fff;
+    color: black;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~Sidebar~~~~~~~~~~~~~~~~~~~~*/
+.div-nav ul li a:hover{
+    background: #fff;
+    color: black;
+}
+.div-nav ul li a{
+    color: white;
+    white-space: nowrap;
+}
+
+.sidebar{
+    background-color: rgba(76, 76, 76, 0.5);
+    width: 72px;
+}
+
+.sidebar .logo-content .logo{
+    display: none;
+
+}
+.sidebar .hos-name{
+    display: none;
+
+}
+
+.sidebar .link-name{
+    display: none;
+}
+
+#log_out:hover{
+    color: black;
+}
+.sidebar .nav-link{
+    display: flex;
+    justify-content: center;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~Sidebar Active~~~~~~~~~~~~~*/
+.sidebar.active{
+    width: 240px;
+}
+
+.sidebar.active .logo-content .logo{
+    display: block;
+
+}
+.sidebar.active .hos-name{
+    display: block;
+
+}
+.sidebar.active .link-name{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar.active ul{
+    margin-left: 30px;
+}
+
+.sidebar.active .nav-link{
+    display: flex;
+    justify-content: start;
+}
+
+
+#list-names .row{
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+}
+
+#box {
+    background-color: rgba(76, 76, 76, 0.5);
+}
+
+.responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

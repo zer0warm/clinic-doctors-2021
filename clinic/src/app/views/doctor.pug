@@ -1,0 +1,113 @@
+extends layout
+
+append link
+    link(rel='stylesheet' href='/MStyle.css')
+
+block style
+    style.
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+        .mobileHide {
+            display: inline;
+        }
+
+        /* Smartphone Portrait and Landscape */
+        @media only screen
+        and (min-device-width: 100px)
+        and (max-device-width: 990px) {
+            .mobileHide {
+                display: none;
+            }
+        }
+
+        .mobileShow {
+            display: none;
+        }
+
+        /* Smartphone Portrait and Landscape */
+        @media only screen
+        and (min-device-width: 0px)
+        and (max-device-width: 989px) {
+            .mobileShow {
+                display: inline;
+            }
+        }
+
+block content
+    .col.py-3
+        // Header
+        .container.mt-3
+            .d-grid.mt-4.mb-3(style='color: white;')
+                h1 DASHBOARD
+        p.lead
+            // Mainboard
+            .container
+                #box.d-grid.p-md-5
+                    #innerbox.row
+                        #picbox.col-12.col-lg-6.p-lg-1(style='background-color: rgb(92, 92, 92);')
+                            img.responsive(src='https://m.media-amazon.com/images/I/41L5XqCNhGL._AC_.jpg')
+                        #infobox.col-12.col-lg-6.p-lg-5(style='background-color: rgb(255, 255, 255);')
+                            h2(style='text-align: center;') Information
+                            .overflow-auto.container.pt-5
+                                .row
+                                    #content.col-12.col-lg-4.mobileHide
+                                        p
+                                            b Name
+                                            br
+                                            br
+                                            b Age
+                                            br
+                                            br
+                                            b Department
+                                            br
+                                            br
+                                            b Phone number
+                                            br
+                                            br
+                                            b Address
+                                            br
+                                            br
+                                            b Note
+                                    #contentfill.col-12.col-lg-8.mobileHide
+                                        p
+                                            span= doctor.Name
+                                            br
+                                            br
+                                            span= doctor.DoB
+                                            br
+                                            br
+                                            span= doctor.Department
+                                            br
+                                            br
+                                            span= doctor.PhoneNumber
+                                            br
+                                            br
+                                            span= doctor.Address
+                                            br
+                                            br
+                                            span Suffer axiety, please be careful and do NOT make him axious
+                                    #smcontent.col-12.mobileShow(style='text-align: center;')
+                                        b Name #{doctor.Name}
+                                        //span= doctor.Name
+                                        br
+                                        br
+                                        b Age
+                                        span= doctor.DoB
+                                        br
+                                        br
+                                        b Department:
+                                        span= doctor.Department
+                                        br
+                                        br
+                                        b Phone
+                                        span= doctor.PhoneNumber
+                                        br
+                                        br
+                                        b Address:
+                                        span= doctor.Address
+                                        br
+                                        br
+                                        b Note:
+                                        span Suffer axiety, please be careful and do NOT make him axious
+    svg(style='position: absolute; bottom: 0; z-index: -100;' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 1440 320')
+        path(fill='#0099ff' fill-opacity='1' d='M0,224L48,192C96,160,192,96,288,90.7C384,85,480,139,576,144C672,149,768,107,864,128C960,149,1056,235,1152,229.3C1248,224,1344,128,1392,80L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z')
