@@ -1,10 +1,10 @@
 const Doctor = require('../models/Employee');
 
 class DoctorController {
-  showDoctor(req, res, next) {
+  showDoctorsList(req, res, next) {
     Doctor.find({})
-      .then((Employee) => {
-        res.json(Employee)
+      .then((doctors) => {
+        res.render('doctors', { doctors: doctors });
       })
       .catch(next);
   }
