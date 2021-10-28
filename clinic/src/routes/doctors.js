@@ -10,6 +10,6 @@ router.get('/edit/:id', doctorsController.editDoctor);
 router.put('/update/:id', doctorsController.updateDoctor);
 // router.get('/create', doctorsController.createDoctor);
 router.post('/store', doctorsController.store);
-router.get('/show', doctorsController.showDoctor);
+router.get('/show', doctorsController.showDoctorsList);
 
 module.exports = router;
