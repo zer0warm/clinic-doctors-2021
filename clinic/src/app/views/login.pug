@@ -1,0 +1,44 @@
+doctype html
+head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='login.css')
+    // Font Awsome Link
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
+    // Bootstrap CSS
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Login
+.page.container-fluid.d-sm-flex.flex-sm-row.p-0.min-vh-100
+    .left.col-6.col-sm-6.col-md-6.col-lg-7.position-relative
+        .logo-details.d-flex.align-items-center(style='position: absolute; top: 10%; left: 15%;')
+            i.fas.fa-home.fa-5x.text-white
+            span.hos-name.ms-4.text-white Final Web Application Development
+        .quote.fw-bolder.text-white
+            p.p1 Welcome,
+            p.p2
+                | Doctors
+                br
+                |  Management
+    .right.col-12.col-sm-6.col-md-6.col-lg-5.position-relative.d-flex.justify-content-center.align-items-center.mb-5
+        .col-6
+            .logo-mobile
+                i.fas.fa-home.fa-2x.text-white
+                span.hos-name.ms-4.text-white Final Web Application Development
+            .d-flex.justify-content-center
+                p.text-white.fs-1.fw-bolder Sign in
+            form(action="/signin" method="post")
+                .mb-3.text-white.fs-4.fw-bold
+                    label.form-label(for='exampleInputEmail1') Username
+                    input#exampleInputEmail1.form-control(type='email' name='email' aria-describedby='emailHelp' placeholder='Enter your username')
+                .mb-3.text-white.fs-4.fw-bold
+                    label.form-label(for='exampleInputPassword1') Password
+                    input#exampleInputPassword1.form-control(type='password' name='pass' placeholder='Enter your password')
+                .mb-3.form-check.text-white
+                    input#exampleCheck1.form-check-input(type='checkbox')
+                    label.form-check-label(for='exampleCheck1') Stay signed in
+                .d-flex.justify-content-center
+                    button.btn.btn-light.btn-lg(type='submit' style='border-radius: 10px;') Login
+svg(style='position: absolute; bottom: 0; z-index: -100;' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 1440 320')
+    path(fill='#0099ff' fill-opacity='1' d='M0,224L48,192C96,160,192,96,288,90.7C384,85,480,139,576,144C672,149,768,107,864,128C960,149,1056,235,1152,229.3C1248,224,1344,128,1392,80L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z')

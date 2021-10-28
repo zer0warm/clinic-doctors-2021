@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-image: linear-gradient(to bottom left, #CB1AE8, #37BDA6);
+}
+
+.page .left .quote .p1{
+    position: absolute;
+    top: 70%;
+    left: 15%;
+    line-height: 40px;
+}
+
+.page .left .quote .p2{
+    position: absolute;
+    top: 78%;
+    left: 40%;
+    line-height: 60px;
+}
+
+.page .left{
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('/img/img-cover.jpg');
+    background-size: 100% 100%;
+}
+@media (max-width: 576px){
+    .page .left{
+        display: none;
+    }
+    .page{
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+.hos-name{
+    font-size: 32px;
+}
+
+.quote{
+    font-size: 64px;
+}
+
+@media (max-width: 1300px){
+    .quote{
+        font-size: 48px;
+    }
+    .hos-name{
+        font-size: 26px;
+    }
+
+}
+
+@media (max-width: 1200px){
+    .quote{
+        font-size: 40px;
+    }
+    .hos-name{
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 992px){
+    .quote{
+        font-size: 32px;
+    }
+    .hos-name{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px){
+    .quote{
+        font-size: 24px;
+    }
+    .hos-name{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px){
+    .page{
+        position: none;
+    }
+}
+
+
+.logo-mobile{
+    display: none;
+}
+
+@media (max-width: 576px){
+    .logo-mobile{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: -35%;
+        left: 25%;
+    }
+}
