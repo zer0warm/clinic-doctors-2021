@@ -4,8 +4,8 @@ const authRouter = require('./auth');
 
 
 function route(app) {
+  app.use('/', authRouter);
   app.use('/list', listRouter);
   app.use('/doctors', doctorRouter);
-  app.use('/auth', authRouter);
 }
 module.exports = route;
