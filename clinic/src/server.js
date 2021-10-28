@@ -21,7 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('combined'));
 app.use(methodOverride('_method'));
+
 app.set('views', path.join(__dirname, 'resources', 'views'));
+app.set('view engine', 'pug');
 
 route(app);
 app.listen(port, () => console.log(`Server is running on ${port}`));
