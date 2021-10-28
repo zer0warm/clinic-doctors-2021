@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title= title
+    block link
+      link(
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      )
+      link(
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+      )
+    block style
+  body
+    block navigation
+      .container-fluid
+        .row.flex-nowra
+          .sidebar.col-auto.px-sm-2.px-0
+            .div-nav.d-flex.flex-column.text-white.min-vh-100
+              .logo-content.d-flex.justify-content-evenly.align-items-center.my-4
+                i.logo.bx.bx-table.bx-sm
+                a.hos-name.text-white.text-decoration-none.ms-1.fw-bold(href='/')
+                  | Clinic Hospital
+                i#btn.fas.fa-bars.d-flex.justify-content-center.align-items-center(style='width: 20px;height: 20px;')
+              ul#menu.nav.nav-pills.flex-column
+                li
+                  a.nav-link.d-flex(href='#' data-bs-toggle='tooltip' data-bs-placement='right' title='Home')
+                    i.icon-item.fas.fa-home.fa-2x
+                    span.link-name.ms-3.fw-bold Home
+                li
+                  a.nav-link.d-flex(href='#' data-bs-toggle='tooltip' data-bs-placement='right' title='Dashboard')
+                    i.icon-item.fas.fa-database.fa-2x
+                    span.link-name.ms-3.fw-bold Dashboard
+                li
+                  a.nav-link.d-flex(href='#' data-bs-toggle='tooltip' data-bs-placement='right' title='Timetable')
+                    i.icon-item.fas.fa-calendar-alt.fa-2x
+                    span.link-name.ms-3.fw-bold Timetable
+              .log-out-div.d-flex.justify-content-center.p-3.mt-auto.mb-3
+                i#log_out.fas.fa-sign-out-alt.fa-2x
+
+          block content

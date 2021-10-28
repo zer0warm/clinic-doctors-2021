@@ -1,0 +1,74 @@
+extends layout
+
+append link
+  link(rel="stylesheet" href="/MDStyle.css")
+
+block style
+  style.
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    .mobileHide {
+      display: inline;
+    }
+
+    /* Smartphone Portrait and Landscape */
+    @media only screen
+    and (min-device-width: 100px)
+    and (max-device-width: 990px) {
+      .mobileHide {
+        display: none;
+      }
+    }
+
+    .mobileShow {
+      display: none;
+    }
+
+    /* Smartphone Portrait and Landscape */
+    @media only screen
+    and (min-device-width: 0px)
+    and (max-device-width: 989px) {
+      .mobileShow {
+        display: inline;
+      }
+    }
+
+block content
+  .col.py-3
+    // Header
+    .container.mt-3
+      .d-grid.mt-4.mb-3(style='color: white;')
+        h1 DASHBOARD
+    p.lead
+      // Mainboard
+      .container
+        #box.d-grid.p-lg-5.p-4
+          // The Search and the stuff
+          .container
+            #search-bar.d-grid
+              .row.p-1.justify-content-between.mobileHide
+                .col-6.input-group
+                  input.form-control(type='search' style='border-radius: 50px;' placeholder='Search' aria-label='Search')
+                  button.btn.btn-primary.btn-outline-light(type='button' style='border-radius: 50px;') search
+                .pt-3.butons
+                  button.btn.btn-primary.rounded-circle.btn-icon(type='button')
+                    i.fas.fa-pen
+                  button.btn.btn-primary.rounded-circle.btn-icon(type='button')
+                    i.fas.fa-plus
+            .row.p-2.ms-4.mt-mb-3(style='color: white;')
+              .col-1.mobileHide ID
+              .col-5.mobileHide Name
+              .col-4.ps-4.mobileHide Department
+              .col-2.mobileHide Avatar
+
+          .overflow-auto.container.mobileHide(style='max-height: 400px;')
+            #list-names.d-grid.gap-3.p-3
+              - let i = 1;
+                each doc in doctors
+                  a(href=`/doctors/show/${doc._id}` style="text-decoration: none; color: black;")
+                    .row.border.ps-3
+                      .col-1.p-4= i++
+                      .col-5.p-4= doc.Name
+                      .col-4.p-4.ps-5= doc.Department
+                      .col-1.ps-pt-4.ms-4.mt-3
+                        img.rounded-circle(src="/img/pic.png" style="width: 70%; height:auto;")
