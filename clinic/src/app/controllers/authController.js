@@ -1,6 +1,5 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-
 class authController{
     signup(req, res, next) {
         User
@@ -28,15 +27,28 @@ class authController{
 
     signin(req, res, next) {
         User.findOne({ email: req.body.email })
-            .then((user) => {
-                if (user) {
-                    if (user.authenticate(req.body.pass)) {
-                        //const jwttoken = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '15h'})
+            .then((users) => {
+                if (users) {
+                    if (users.authenticate(req.body.pass)) {
+                        const token = jwt.sign({_id: users._id}, process.env.JWT_SECRET_KEY, {expiresIn: '15h'})
+                        // const {email, pass} = user
+                        jwt.verify(token, process.env.JWT_SECRET_KEY, (err, data) => {
+                            console.log(err,data)
+                            if(err) res.redirect('/')
+                            next()
+                        })
+                        res.cookie('token', token, {
+                            httpOnly: true,
+                            maxAge: 300000
+                        })
+                        // res.session.user
                         res.redirect('/doctors/show');
+                    }else {
+                        res.json({msg: 'invalid password'}) 
                     }
-                } else {
-                    res.json({msg: 'invalid password'});
-                }
+                }else {
+                    res.json({msg: 'invalid email'})
+                };
             })
             .catch(next);
     }

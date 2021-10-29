@@ -7,6 +7,8 @@ const app = express();
 const database = require('./config/db');
 const port = 7000;
 const dotenv = require('dotenv')
+const cookie = require('cookie-parser');
+// const session = require('express-session');
 
 dotenv.config();
 database.connect();
@@ -16,6 +18,14 @@ app.use(
   }),
 );
 app.use(express.json());
+app.use(cookie())
+// app.use(session({
+//   key: "token",
+//   secret: 'clinic2021@',
+//   resave: true, 
+//   saveUninitialized: true,
+//   cookie: { maxAge: 60000 }
+// }))
 
 app.use(express.static(path.join(__dirname, 'public')));
 
