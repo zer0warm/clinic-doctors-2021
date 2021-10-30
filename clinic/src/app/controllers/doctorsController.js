@@ -1,9 +1,18 @@
 const Doctor = require('../models/Employee');
 
 class DoctorController {
-  showDoctorsList(req, res, next) {
+  listDoctors(req, res, next) {
     Doctor.find({})
       .then((doctors) => {
+        doctors.sort((d1, d2) => {
+          if (d1.Name < d2.Name) {
+            return -1;
+          } else if (d1.Name === d2.Name) {
+            return 0;
+          } else {
+            return 1;
+          }
+        })
         res.render('doctors', { doctors: doctors });
       })
       .catch(next);
@@ -12,24 +21,22 @@ class DoctorController {
   showDoctor(req, res, next) {
     Doctor.findById(req.params.id)
         .then((doctor) => {
+          console.log(doctor);
           res.render('doctor', { doctor: doctor });
         })
         .catch(next);
   }
 
-  // createDoctor(req, res, next) {
-  //   console.log(req.body);
-  //   res.render('doctors/create');
-  // }
+  createDoctorForm(req, res, next) {
+    res.render('create');
+  }
 
-  store(req, res, next) {
+  createDoctor(req, res, next) {
     const doctor = new Doctor(req.body);
     doctor
       .save()
-      .then(() => res.json(doctor))
-      .catch(next)
-
-      res.send('New doctor saved')
+      .then(() => res.redirect('/doctors/show'))
+      .catch(next);
   }
 
   editDoctor(req, res, next) {
@@ -41,15 +48,23 @@ class DoctorController {
       .catch(next);
   }
 
+  updateDoctorForm(req, res, next) {
+    console.log('UpdateDoctorForm');
+    Doctor.findById(req.params.id)
+      .then((doctor) => res.render('update', { doctor: doctor }))
+      .catch(next);
+  }
+
   updateDoctor(req, res, next) {
+    console.log('UpdateDoctor');
     Doctor.updateOne({ _id: req.params.id }, req.body)
-      .then(() => res.json(Doctor))
-      .catch(next); 
+      .then(() => res.redirect('/doctors/show'))
+      .catch(next);
   }
 
   deleteDoctor(req, res, next) {
-    Doctor.delete({ _id: req.params.id })
-      .then(() => res.send('Deleted Successfully'))
+    Doctor.deleteOne({ _id: req.params.id })
+      .then(() => res.redirect('/doctors/show'))
       .catch(next);
   }
 
@@ -62,6 +77,15 @@ class DoctorController {
   restoreDoctor(req, res, next) {
     Doctor.restore({ _id: req.params.id })
       .then(() => res.send('Restored successfully'))
+      .catch(next);
+  }
+
+  search(req,res,next){
+    const search = req.query.q;
+    Doctor.find({Name: {$regex: search, $options: 'i'}})
+      .then((doctors) => {
+        res.render('doctors', { doctors: doctors });
+      })
       .catch(next);
   }
 }

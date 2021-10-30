@@ -7,14 +7,14 @@ const Employee = new Schema(
   {
     Name: { type: String, maxlength: 255, required: true },
     DoB: { type: String, maxlength: 255 },
-    Gender: { type: String, maxlength: 255 },  
+    Gender: { type: String, maxlength: 255 },
     Address: { type: String, maxlength: 255 },
     Email: { type: String, maxlength: 255 },
     PhoneNumber: { type: String, maxlength: 255 },
     Department: { type: String, maxlength: 255 },
     Position: { type: String, maxlength: 255 },
     Salary: { type: String, maxlength: 255 },
-    slug: { type: String, slug: 'name', unique: true }, 
+    slug: { type: String, slug: 'name', unique: true },
   },
   { timestamps: true },
 );

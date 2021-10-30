@@ -15,6 +15,34 @@ html
         crossorigin="anonymous"
       )
     block style
+      style.
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+        .mobileHide {
+          display: inline;
+        }
+
+        /* Smartphone Portrait and Landscape */
+        @media only screen
+        and (min-device-width: 100px)
+        and (max-device-width: 990px) {
+          .mobileHide {
+            display: none;
+          }
+        }
+
+        .mobileShow {
+          display: none;
+        }
+
+        /* Smartphone Portrait and Landscape */
+        @media only screen
+        and (min-device-width: 0px)
+        and (max-device-width: 989px) {
+          .mobileShow {
+            display: inline;
+          }
+        }
   body
     block navigation
       .container-fluid
@@ -24,7 +52,7 @@ html
               .logo-content.d-flex.justify-content-evenly.align-items-center.my-4
                 i.logo.bx.bx-table.bx-sm
                 a.hos-name.text-white.text-decoration-none.ms-1.fw-bold(href='/')
-                  | Clinic Hospital
+                  | Clinic
                 i#btn.fas.fa-bars.d-flex.justify-content-center.align-items-center(style='width: 20px;height: 20px;')
               ul#menu.nav.nav-pills.flex-column
                 li
@@ -32,14 +60,15 @@ html
                     i.icon-item.fas.fa-home.fa-2x
                     span.link-name.ms-3.fw-bold Home
                 li
-                  a.nav-link.d-flex(href='/doctors/show' data-bs-toggle='tooltip' data-bs-placement='right' title='Dashboard')
+                  a.nav-link.d-flex(href='/doctors/show' data-bs-toggle='tooltip' data-bs-placement='right' title='Doctor list')
                     i.icon-item.fas.fa-database.fa-2x
-                    span.link-name.ms-3.fw-bold Dashboard
-                li
-                  a.nav-link.d-flex(href='#' data-bs-toggle='tooltip' data-bs-placement='right' title='Timetable')
-                    i.icon-item.fas.fa-calendar-alt.fa-2x
-                    span.link-name.ms-3.fw-bold Timetable
+                    span.link-name.ms-3.fw-bold Doctor list
               .log-out-div.d-flex.justify-content-center.p-3.mt-auto.mb-3
-                i#log_out.fas.fa-sign-out-alt.fa-2x
+                form(action="/signout" method="post")
+                  button(type="submit" style="border: none; background: none")
+                    i#log_out.fas.fa-sign-out-alt.fa-2x
 
           block content
+    svg(style='position: absolute; bottom: 0; z-index: -100;' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 1440 320')
+      path(fill='#0099ff' fill-opacity='1' d='M0,128L80,154.7C160,181,320,235,480,245.3C640,256,800,224,960,208C1120,192,1280,192,1360,192L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z')
+    script(src="/script.js")

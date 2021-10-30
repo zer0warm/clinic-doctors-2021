@@ -10,7 +10,8 @@ const authController = require('../app/controllers/authController');
 //     }
 //   };
 router.get('/', authController.signinForm);
-router.post('/signup', authController.signup);
+router.post('/signout', authController.signout);
 router.post('/signin', authController.signin);
+router.post('/signup', authController.signup);
 
 module.exports = router;

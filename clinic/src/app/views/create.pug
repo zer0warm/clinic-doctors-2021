@@ -1,0 +1,49 @@
+extends layout
+
+append link
+    link(rel="stylesheet" href="/dashboard.css")
+
+block content
+    .col.py-3
+        // Header
+        .container.mt-3
+            .d-grid.mt-4.mb-3(style='color: white;')
+                h1 Create a doctor
+        p.lead
+            // Mainboard
+            .container
+                #box.d-grid.p-lg-5.p-4
+                    form.row(action='/doctors/create', method='post')
+                        .col-12.col-lg-3.mobileHide
+                        #content.col-12.col-lg-3.mobileHide(style='color: white')
+                            div(for='name') Name
+                            div(for='dob' style='margin-top: 20px;') Date of birth
+                            div(for='gender' style='margin-top: 20px;') Gender
+                            div(for='address' style='margin-top: 20px;') Address
+                            div(for='email' style='margin-top: 20px;') Email
+                            div(for='phone' style='margin-top: 20px;') Phone number
+                            div(for='department' style='margin-top: 20px;') Department
+                            div(for='position' style='margin-top: 20px;') Position
+                            div(for='salary' style='margin-top: 20px;') Salary
+                        #contentfill.col-12.col-lg-3.mobileHide
+                            div
+                                input#name(type='text' name='Name')
+                            div(style='margin-top: 15px;')
+                                input#dob(type='date' name='DoB')
+                            div(style='margin-top: 15px;')
+                                input#gender(type='text' name='Gender')
+                            div(style='margin-top: 15px;')
+                                input#address(type='text' name='Address')
+                            div(style='margin-top: 15px;')
+                                input#email(type='text' name='Email')
+                            div(style='margin-top: 15px;')
+                                input#phonenumber(type='text' name='PhoneNumber')
+                            div(style='margin-top: 15px;')
+                                input#department(type='text' name='Department')
+                            div(style='margin-top: 15px;')
+                                input#position(type='text' name='Position')
+                            div(style='margin-top: 15px;')
+                            input#salary(type='text' name='Salary')
+                        .col-12.col-lg-3.mobileHide
+                        .d-flex.justify-content-center.pt-4
+                            button.btn.btn-light.btn-lg(type='submit' style='border-radius: 10px;') Create

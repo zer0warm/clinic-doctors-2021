@@ -3,13 +3,15 @@ const router = express.Router();
 const doctorsController = require('../app/controllers/doctorsController');
 
 router.patch('/restore/:id', doctorsController.restoreDoctor);
-router.delete('/delete/:id', doctorsController.deleteDoctor);
+router.post('/delete/:id', doctorsController.deleteDoctor);
 router.delete('/force-delete/:id', doctorsController.forceDeleteDoctor);
 router.get('/edit/:id', doctorsController.editDoctor);
-router.put('/update/:id', doctorsController.updateDoctor);
-// router.get('/create', doctorsController.createDoctor);
-router.post('/store', doctorsController.store);
-router.get('/show', doctorsController.showDoctorsList);
+router.get('/update/:id', doctorsController.updateDoctorForm);
+router.post('/update/:id', doctorsController.updateDoctor);
+router.get('/create', doctorsController.createDoctorForm);
+router.post('/create', doctorsController.createDoctor);
+router.get('/show', doctorsController.listDoctors);
 router.get('/show/:id', doctorsController.showDoctor);
+router.get('/search', doctorsController.search);
 
 module.exports = router;

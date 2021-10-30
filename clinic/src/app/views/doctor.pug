@@ -3,111 +3,98 @@ extends layout
 append link
     link(rel='stylesheet' href='/MStyle.css')
 
-block style
-    style.
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
-        .mobileHide {
-            display: inline;
-        }
-
-        /* Smartphone Portrait and Landscape */
-        @media only screen
-        and (min-device-width: 100px)
-        and (max-device-width: 990px) {
-            .mobileHide {
-                display: none;
-            }
-        }
-
-        .mobileShow {
-            display: none;
-        }
-
-        /* Smartphone Portrait and Landscape */
-        @media only screen
-        and (min-device-width: 0px)
-        and (max-device-width: 989px) {
-            .mobileShow {
-                display: inline;
-            }
-        }
-
 block content
     .col.py-3
         // Header
         .container.mt-3
             .d-grid.mt-4.mb-3(style='color: white;')
-                h1 DASHBOARD
+                h1 DETAILS
         p.lead
             // Mainboard
             .container
                 #box.d-grid.p-md-5
                     #innerbox.row
-                        #picbox.col-12.col-lg-6.p-lg-1(style='background-color: rgb(92, 92, 92);')
+                        #picbox.col-12.col-lg-6.p-lg-1.mobileHide(style='background-color: rgb(92, 92, 92);')
                             img.responsive(src='https://m.media-amazon.com/images/I/41L5XqCNhGL._AC_.jpg')
-                        #infobox.col-12.col-lg-6.p-lg-5(style='background-color: rgb(255, 255, 255);')
-                            h2(style='text-align: center;') Information
-                            .overflow-auto.container.pt-5
+                        #infobox.col-12.col-lg-6.ps-lg-5.pt-lg-2(style='background-color: rgb(255, 255, 255);')
+                            form(action=`/doctors/delete/${doctor._id}` method='post')
+                                .pt-3.butons
+                                    a.btn.btn-primary.rounded-circle.btn-icon(href=`/doctors/update/${doctor._id}`)
+                                        i.fas.fa-pen
+                                    button.btn.btn-primary.rounded-circle.btn-icon(type='submit')
+                                        i.fas.fa-minus
+                            h2.col-12.mt-3(style='text-align: center;') Information
+
+                            .overflow-auto.container.pt-4(style='max-height: 500px; max-width: auto;')
                                 .row
-                                    #content.col-12.col-lg-4.mobileHide
-                                        p
+                                    .col-12.col-lg-1.mobileHide
+                                    #content.col-12.col-lg-5.mobileHide
+                                        div
                                             b Name
-                                            br
-                                            br
-                                            b Age
-                                            br
-                                            br
-                                            b Department
-                                            br
-                                            br
-                                            b Phone number
-                                            br
-                                            br
+                                        div(style='margin-top: 10px;')
+                                            b Date of birth
+                                        div(style='margin-top: 10px;')
+                                            b Gender
+                                        div(style='margin-top: 10px;')
                                             b Address
-                                            br
-                                            br
-                                            b Note
-                                    #contentfill.col-12.col-lg-8.mobileHide
-                                        p
-                                            span= doctor.Name
-                                            br
-                                            br
-                                            span= doctor.DoB
-                                            br
-                                            br
-                                            span= doctor.Department
-                                            br
-                                            br
-                                            span= doctor.PhoneNumber
-                                            br
-                                            br
-                                            span= doctor.Address
-                                            br
-                                            br
-                                            span Suffer axiety, please be careful and do NOT make him axious
-                                    #smcontent.col-12.mobileShow(style='text-align: center;')
-                                        b Name #{doctor.Name}
-                                        //span= doctor.Name
+                                        div(style='margin-top: 10px;')
+                                            b Email
+                                        div(style='margin-top: 10px;')
+                                            b Phone number
+                                        div(style='margin-top: 10px;')
+                                            b Department
+                                        div(style='margin-top: 10px;')
+                                            b Position
+                                        div(style='margin-top: 10px;')
+                                            b Salary
+                                    #contentfill.col-12.col-lg-5.mobileHide
+                                        if !doctor.Name
+                                            div undefined
+                                        else
+                                            div= doctor.Name
+                                        if !doctor.DoB
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.DoB
+                                        if !doctor.Gender
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.Gender
+                                        if !doctor.Address
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.Address
+                                        if !doctor.Email
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.Email
+                                        if !doctor.PhoneNumber
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.PhoneNumber
+                                        if !doctor.Department
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.Department
+                                        if !doctor.Position
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.Position
+                                        if !doctor.Salary
+                                            div(style='margin-top: 10px;') undefined
+                                        else
+                                            div(style='margin-top: 10px;')= doctor.Salary
+                                    .col-12.col-lg-1.mobileHide
+                                    #smcontent.col.overflow-auto.container.mobileShow(style='text-align: center; max-height: 450px; max-width: 210px;')
+                                        img(src='https://m.media-amazon.com/images/I/41L5XqCNhGL._AC_.jpg' style='height: 50%; width: auto;')
                                         br
                                         br
-                                        b Age
-                                        span= doctor.DoB
-                                        br
-                                        br
-                                        b Department:
-                                        span= doctor.Department
-                                        br
-                                        br
-                                        b Phone
-                                        span= doctor.PhoneNumber
-                                        br
-                                        br
-                                        b Address:
-                                        span= doctor.Address
-                                        br
-                                        br
-                                        b Note:
-                                        span Suffer axiety, please be careful and do NOT make him axious
-    svg(style='position: absolute; bottom: 0; z-index: -100;' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 1440 320')
-        path(fill='#0099ff' fill-opacity='1' d='M0,224L48,192C96,160,192,96,288,90.7C384,85,480,139,576,144C672,149,768,107,864,128C960,149,1056,235,1152,229.3C1248,224,1344,128,1392,80L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z')
+                                        div Name: #{doctor.Name}
+                                        div DoB: #{doctor.DoB}
+                                        div Gender: #{doctor.Gender}
+                                        div Address: #{doctor.Address}
+                                        div Email: #{doctor.Email}
+                                        div Phone number: #{doctor.PhoneNumber}
+                                        div Department: #{doctor.Department}
+                                        div Position: #{doctor.Position}
+                                        div Salary: #{doctor.Salary}

@@ -22,35 +22,45 @@ class authController{
     }
 
     signinForm(req, res, next) {
-        res.render('login', {});
+        if (req.cookies.token) {
+            res.redirect('/dashboard');
+        } else {
+            res.render('login', {});
+        }
     }
 
     signin(req, res, next) {
         User.findOne({ email: req.body.email })
-            .then((users) => {
-                if (users) {
-                    if (users.authenticate(req.body.pass)) {
-                        const token = jwt.sign({_id: users._id}, process.env.JWT_SECRET_KEY, {expiresIn: '15h'})
+            .then((user) => {
+                if (user) {
+                    if (user.authenticate(req.body.pass)) {
+                        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET_KEY, {expiresIn: '4h'})
                         // const {email, pass} = user
                         jwt.verify(token, process.env.JWT_SECRET_KEY, (err, data) => {
-                            console.log(err,data)
-                            if(err) res.redirect('/')
-                            next()
-                        })
+                            if(err) {
+                                //console.log(err);
+                            }
+                            next(data);
+                        });
                         res.cookie('token', token, {
                             httpOnly: true,
-                            maxAge: 300000
+                            maxAge: 14400000
                         })
                         // res.session.user
-                        res.redirect('/doctors/show');
+                        res.redirect('/dashboard');
                     }else {
-                        res.json({msg: 'invalid password'}) 
+                        res.json({msg: 'invalid password'});
                     }
                 }else {
-                    res.json({msg: 'invalid email'})
-                };
+                    res.json({msg: 'invalid email'});
+                }
             })
             .catch(next);
+    }
+
+    signout(req, res, next) {
+        res.clearCookie('token');
+        res.redirect('/');
     }
 }
 
