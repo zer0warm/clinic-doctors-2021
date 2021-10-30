@@ -36,12 +36,12 @@ class authController{
                     if (user.authenticate(req.body.pass)) {
                         const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET_KEY, {expiresIn: '4h'})
                         // const {email, pass} = user
-                        jwt.verify(token, process.env.JWT_SECRET_KEY, (err, data) => {
-                            if(err) {
-                                //console.log(err);
-                            }
-                            next(data);
-                        });
+                        // jwt.verify(token, process.env.JWT_SECRET_KEY, (err, data) => {
+                        //     if(err) {
+                        //         //console.log(err);
+                        //     }
+                        //     next(data);
+                        // });
                         res.cookie('token', token, {
                             httpOnly: true,
                             maxAge: 14400000
